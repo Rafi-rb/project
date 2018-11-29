@@ -1,0 +1,62 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: install curl package
+    yum:
+     name: curl-7.29.0-46.el7.x86_64  
+     state: present 
+  - name: install the nvm package
+    shell: 'cuel https://raw.githubusercontent.com/creationix/nvm/v0.25.0/install.sh | bash'
+  - name: install node-8.12.0 package   
+    shell: 'curl -sL https://deb.nodesource.com/setup_8.x '
+  - name: node package
+    yum:
+     name: nodejs
+     state: present
+  - name: "Installing Docker Prerequisite packages"
+    yum:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+  - name: "Configuring docker-ce repo"
+    get_url:
+      url: https://download.docker.com/linux/centos/docker-ce.repo
+      dest: /etc/yum.repos.d/docker-ce.repo
+      mode: 0644
+  - name: " Installing Docker latest version"
+    yum:
+      name: docker-ce
+      state: present
+  - name: " Starting and Enabling Docker service"
+    service:
+      name: docker
+      state: started
+      enabled: yes
+  - name: Docker Compose is install
+    yum:
+     name: epel-release
+     state: present
+  - name: install package
+    yum:
+      name: python-pip
+      state: present 
+  - name: install compose
+    pip:
+      name: docker-compose
+      state: present
+  - name: install git 
+    yum:
+      name: git
+      state: present     
+  - name: install openssl 
+    yum:   
+      name: openssl
+      state: present
+   
+ 
+     
+
