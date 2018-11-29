@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: backup the artifact
+    copy:
+      src: /var/lib/jenkins/workspace/lead/dist/lib/leadapp.war
+      dest: /opt/hello
+  - name: copy the file
+    copy:
+      src: /var/lib/jenkins/workspace/lead/dist/lib/leadapp.war
+      dest: /opt/tomcat7/webapps

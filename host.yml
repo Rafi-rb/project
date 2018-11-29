@@ -1,0 +1,22 @@
+---
+- hosts: all
+  
+  tasks:
+  - name: to stop the server
+    shell: ./shutdown.sh
+    args:
+      chdir: /opt/tomcat/bin
+
+  - name: backup the artifact
+    copy:
+      src: /var/lib/jenkins/workspace/lead/dist/lib/leadapp.war
+      dest: /opt/hello
+  - name: copy the file 
+    copy:
+      src: /var/lib/jenkins/workspace/lead/dist/lib/leadapp.war
+      dest: /opt/tomcat/webapps
+  - name: start tomcat server
+    shell: ./startup.sh
+    args:
+      chdir: /opt/tomcat/bin
+

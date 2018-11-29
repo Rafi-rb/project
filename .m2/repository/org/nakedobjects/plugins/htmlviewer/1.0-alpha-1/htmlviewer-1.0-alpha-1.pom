@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>Html Viewer and Bootstrapping</name>
+    <groupId>org.nakedobjects.plugins</groupId>
+    <artifactId>htmlviewer</artifactId>
+	<version>1.0-alpha-1</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.nakedobjects</groupId>
+        <artifactId>nakedobjects</artifactId>
+        <version>4.0-alpha-1</version>
+    </parent>
+
+    <modules>
+        <module>viewer</module>
+        <module>client</module>
+        <module>webapp</module>
+        <module>war-archetype</module>
+    </modules>
+
+    <dependencyManagement>
+	    <dependencies>
+		    <dependency>
+			    <groupId>org.nakedobjects</groupId>
+                <artifactId>runtime</artifactId>
+			    <version>4.0-alpha-1</version>
+		    </dependency>
+		    <dependency>
+			    <groupId>org.nakedobjects</groupId>
+                <artifactId>runtime</artifactId>
+                <type>test-jar</type>
+			    <version>4.0-alpha-1</version>
+		    </dependency>
+		    <dependency>
+			    <groupId>org.nakedobjects</groupId>
+                <artifactId>metamodel</artifactId>
+			    <version>4.0-alpha-1</version>
+		    </dependency>
+		    <dependency>
+			    <groupId>org.nakedobjects</groupId>
+                <artifactId>metamodel</artifactId>
+    			<type>test-jar</type>
+			    <version>4.0-alpha-1</version>
+		    </dependency>
+	    </dependencies>
+    </dependencyManagement>
+</project>
